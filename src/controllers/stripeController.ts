@@ -76,7 +76,7 @@ export const webhook = async (req: Request, res: Response) => {
     switch (event.type) {
       case "checkout.session.completed":
         await axios.patch(
-          `https://e-shop-backend-new-hazel.vercel.app/${client_reference_id}`,
+          `https://e-shop-backend-new-hazel.vercel.app/orders${client_reference_id}`,
           // `http://localhost:3000/orders/${client_reference_id}`,
           {
             payment_id: id,
