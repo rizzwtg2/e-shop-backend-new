@@ -1,5 +1,5 @@
 const getEnv = (key: string, defaultValue?: string) => {
-  const value = process.env[key] ?? defaultValue; // Use nullish coalescing to allow empty strings
+  const value = process.env[key] ?? defaultValue; // Satte denna för att mitt lokala db password var en tom sträng och det tilläts inte innan
   if (value === undefined || value === null) {
     throw new Error(`Missing environment variable: ${key}`);
   }
@@ -12,4 +12,4 @@ export const DB_PASSWORD = getEnv("DB_PASSWORD");
 export const DB_NAME = getEnv("DB_NAME");
 export const DB_PORT = parseInt(getEnv("DB_PORT", "3306"), 10);
 export const STRIPE_SECRET_KEY = getEnv("STRIPE_SECRET_KEY");
-// export const ACCESS_TOKEN_SECRET = getEnv("ACCESS_TOKEN_SECRET");
+export const ACCESS_TOKEN_SECRET = getEnv("ACCESS_TOKEN_SECRET");

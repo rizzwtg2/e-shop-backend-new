@@ -31,7 +31,7 @@ app.use("/customers", customerRouter);
 app.use("/orders", orderRouter);
 app.use("/order-items", orderItemRouter);
 app.use("/stripe", stripeRouter);
-// app.use("/auth", authRouter);
+app.use("/auth", authRouter);
 
 // Attempt to connect to the database
 connectDB();
