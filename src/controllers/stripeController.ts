@@ -48,7 +48,8 @@ export const checkoutSessionEmbedded = async (req: Request, res: Response) => {
       expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 minutes
     });
     await axios.patch(
-      `http://localhost:3000/orders/${order_id}`,
+      `https://e-shop-backend-new-hazel.vercel.app/orders/${order_id}`,
+      // `http://localhost:3000/orders/${order_id}`,
       {
         payment_id: session.id,
         payment_status: PaymentStatus.Unpaid,
@@ -75,7 +76,8 @@ export const webhook = async (req: Request, res: Response) => {
     switch (event.type) {
       case "checkout.session.completed":
         await axios.patch(
-          `http://localhost:3000/orders/${client_reference_id}`,
+          `https://e-shop-backend-new-hazel.vercel.app/${client_reference_id}`,
+          // `http://localhost:3000/orders/${client_reference_id}`,
           {
             payment_id: id,
             payment_status: PaymentStatus.Paid,
@@ -91,10 +93,12 @@ export const webhook = async (req: Request, res: Response) => {
         const metadata = JSON.parse(session.metadata.items);
         metadata.forEach(async (item: metadata) => {
           try {
-            const response = await axios.get(`http://localhost:3000/products/${item.product_id}`);
+            const response = await axios.get(`https://e-shop-backend-new-hazel.vercel.app/products/${item.product_id}`);
+            // const response = await axios.get(`http://localhost:3000/products/${item.product_id}`);
             const product: IProduct = response.data;
             product.stock -= item.quantity;
 
+            await axios.patch(`https://e-shop-backend-new-hazel.vercel.app/${item.product_id}`, product);
             await axios.patch(`http://localhost:3000/products/${item.product_id}`, product);
             console.log(`${item.product_id} updated`);
           } catch (error) {
@@ -104,7 +108,8 @@ export const webhook = async (req: Request, res: Response) => {
         break;
       case "checkout.session.expired":
         console.log("Payment canceled");
-        await axios.delete(`http://localhost:3000/orders/${client_reference_id}`, {
+        await axios.delete(`https://e-shop-backend-new-hazel.vercel.app/orders/${client_reference_id}`, {
+          // await axios.delete(`http://localhost:3000/orders/${client_reference_id}`, {
           headers: {
             "Content-Type": "application/json",
           },
