@@ -98,8 +98,8 @@ export const webhook = async (req: Request, res: Response) => {
             const product: IProduct = response.data;
             product.stock -= item.quantity;
 
-            await axios.patch(`https://e-shop-backend-new-hazel.vercel.app/${item.product_id}`, product);
-            await axios.patch(`http://localhost:3000/products/${item.product_id}`, product);
+            await axios.patch(`https://e-shop-backend-new-hazel.vercel.app/products/${item.product_id}`, product);
+            // await axios.patch(`http://localhost:3000/products/${item.product_id}`, product);
             console.log(`${item.product_id} updated`);
           } catch (error) {
             console.error(`Failed to update product ${item.product_id}:`, error);
