@@ -53,7 +53,7 @@ export const checkoutSessionEmbedded = async (req: Request, res: Response) => {
       {
         payment_id: session.id,
         payment_status: PaymentStatus.Unpaid,
-        order_status: OrderStatus.Shipped,
+        order_status: OrderStatus.Pending,
       },
       {
         headers: {
