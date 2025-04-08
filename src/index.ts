@@ -14,8 +14,9 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:5173", "https://e-commerce-frontend-one-psi.vercel.app/*"],
-
     credentials: true, // ✅ Allows cookies
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
