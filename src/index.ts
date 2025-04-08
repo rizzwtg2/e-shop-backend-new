@@ -14,7 +14,8 @@ app.use(cookieParser());
 app.use(
   cors({
     // origin: "http://localhost:5173",
-    origin: "https://e-commerce-frontend-one-psi.vercel.app",
+    origin: "https://e-commerce-frontend-carls-projects-e79a5046.vercel.app/",
+    // origin: "https://e-commerce-frontend-one-psi.vercel.app",
     credentials: true, // ✅ Allows cookies
   })
 );
