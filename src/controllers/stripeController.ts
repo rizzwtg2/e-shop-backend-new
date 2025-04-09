@@ -43,8 +43,8 @@ export const checkoutSessionEmbedded = async (req: Request, res: Response) => {
       },
       mode: "payment",
       ui_mode: "embedded",
-      return_url: "http://localhost:5173/order-confirmation/{CHECKOUT_SESSION_ID}",
-      // return_url: "https://e-commerce-frontend-one-psi.vercel.app/order-confirmation/{CHECKOUT_SESSION_ID}",
+      // return_url: "http://localhost:5173/order-confirmation/{CHECKOUT_SESSION_ID}",
+      return_url: "https://e-commerce-frontend-one-psi.vercel.app/order-confirmation/{CHECKOUT_SESSION_ID}",
       client_reference_id: order_id,
       expires_at: Math.floor(Date.now() / 1000) + 30 * 60, // 30 minutes
     });
