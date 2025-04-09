@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://e-commerce-frontend-one-psi.vercel.app",
+    // origin: "https://e-commerce-frontend-one-psi.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true, // ✅ Allows cookies
   })
